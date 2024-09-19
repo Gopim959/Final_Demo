@@ -1,0 +1,105 @@
+<nav class="navbar navbar-dark bg-primary">
+  <a class="navbar-brand">
+    <b class="text-white px-md-2 mt-7">
+      <span style="font-size: 20px;">
+        <i class="fas fa-user-circle"></i>
+      </span>
+      User Manager
+    </b>
+  </a>
+</nav>
+
+<!-- Container for search box and button -->
+<div class="radio">
+  <div class="d-flex justify-content-end  mt-2 me-3 search-box">
+    <div class="d-flex me-2">
+      <input class="form-control border-dark" type="search" placeholder="Search" style="width:195px" aria-label="Search"
+        [(ngModel)]="searchText"(ngModelChange)="page = 1"  />
+        <!-- <input [(ngModel)]="searchText" (ngModelChange)="page = 1" placeholder="Search" /> -->
+
+    </div>
+    <button class="btn btn-success" (click)="addBtn()">
+      <i class="fa-solid fa-plus"></i>
+      Add
+    </button>
+  </div>
+  <div class="form-check form-check-inline active-radio">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="active"
+    [(ngModel)]="activeFilter" (change)="onFilterRadio('active')">
+    <label class="form-check-label" for="inlineRadio1">Active</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="inactive"
+    [(ngModel)]="activeFilter" (change)="onFilterRadio('inactive')">
+    <label class="form-check-label" for="inlineRadio2">Inactive</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="all"
+    [(ngModel)]="activeFilter" (change)="onFilterRadio('all')">
+    <label class="form-check-label" for="inlineRadio3">All</label>
+  </div>
+  
+
+
+<div class="container mt-3">
+  <table class="table align-middle mb-0 bg-white" id="crudTable">
+    <thead class="bg-light">
+      <tr>
+        <th style="width:60px;">Img</th>
+        <th style="width:132px;" (click)="sortByName()">Name
+          <i class="fas" [ngClass]="{'fa-sort-alpha-down': sortAsc, 'fa-sort-alpha-up': !sortAsc}"
+            style="color: green;">
+          </i>
+        </th>
+        <th style="width:118px;">DOB</th>
+        <th style="width:118px;">Mobile</th>
+        <th style="width:118px;">Country</th>
+        <th style="width:118px;">active</th>
+        <th style="width:118px;">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of searchList() | paginate: { itemsPerPage: 3, currentPage: page };let i=index">
+        <td>
+          <img *ngIf="user.Image" [src]="user.Image" alt="User Image" style="width: 50px; height: 50px; border-radius: 50px;">
+          <span *ngIf="!user.Image">No Image</span>
+        </td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.dob }}</td>
+        <td>{{ user.mobile }}</td>
+        <td>{{ user.country }}</td>
+        <td>
+          <span *ngIf="activeFilter === 'all'">
+            {{ user.active ? 'Y' : 'N' }}
+          </span>
+        </td>
+        <td>
+          <a class="icon-edit" (click)="editData(user)">
+            <i class="fa-solid fa-pen"></i>
+          </a>
+          <a class="icon-trash">
+            <i class="fa-solid fa-trash" (click)=" DeleteAlert(user.id)"></i>
+          </a>
+          <a class="icon-eye" (click)="viewData(user)">
+            <i class="fa-regular fa-eye"></i>
+          </a>
+          <button class="btn btn-primary" type="button" (click)="updateData()" *ngIf="isUpdating">Update</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="text-center mb-4 mt-4">
+    <span *ngIf="searchList()?.length === 0">
+      <h5>No record found</h5>
+    </span>
+  </div>
+
+  <div class="page">
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  </div>
+
+  <div class="col">
+    <p class="record">Total Record: {{ getTotalRecord() }}</p>
+  </div>
+
+</div>

@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <br>
+    <div class="cross">
+        <h4>
+            <i class="fa-solid fa-circle-info"></i> User Details
+        </h4>
+        <span type="button" class="close" aria-label="Close" (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </span>
+    </div>
+    <div>
+        <img *ngIf="Viewusers.Image" [src]="Viewusers.Image" alt="User Image" style="width: 150px; height: 150px; border-radius: 75px;">
+        <span *ngIf="!Viewusers.Image">No Image Available</span>
+      </div>
+
+    
+    <p>Name: {{Viewusers.name}}</p>
+    <p>Mobile:{{Viewusers.mobile}}</p>
+    <p>Email:{{Viewusers.email}}</p>
+    <p>DOB:{{Viewusers.dob}}</p>
+    <p>Gender:{{Viewusers.gender}}</p>
+    <p>Country:{{Viewusers.country}}</p>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+</div>

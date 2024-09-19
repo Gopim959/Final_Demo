@@ -1,0 +1,98 @@
+.add {
+    float: right;
+    justify-content: baseline;
+    color: hsl(0, 0%, 100%);
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+  }
+  
+  .header h2 {
+    margin: 0;
+  }
+  
+  .icon-trash {
+    display: inline-flex;
+    align-items: center;
+    color: #d60f0f;
+    text-decoration: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .icon-trash i {
+    margin-right: 8px;
+  }
+  
+  /* .icon-button:hover {
+      color: #121314; 
+    } */
+  .icon-trash {
+    display: inline-flex;
+    align-items: center;
+    color: #d60f0f;
+    text-decoration: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .icon-trash i {
+    margin-right: 8px;
+  }
+  
+  .icon-edit {
+    display: inline-flex;
+    align-items: center;
+     color: green;
+    text-decoration: none;
+    font-size: 24px;
+    cursor: pointer;
+  
+  }
+  
+  .icon-edit i {
+    margin-right: 8px;
+  }
+  
+  /* .icon-edit:hover {
+      color: #121314; 
+    } */
+  .icon-eye {
+    display: inline-flex;
+    align-items: center;
+    color: rgb(8, 8, 8);
+    text-decoration: none;
+    font-size: 24px;
+    cursor: pointer;
+  
+  }
+  
+  .icon-eye i {
+    margin-right: 8px;
+    align-items: center;
+  }
+  
+  .page {
+    float: right;
+  }
+  
+  .record {
+    margin: bottom 5px;
+  
+  }
+  .fa .fa{
+    color:green
+  }
+  .active-radio{
+    margin-left: 140px;
+  }
+  .radio{
+    margin-bottom: --7px;
+  }
+  .search-box{
+    margin-bottom: -16px;
+  }

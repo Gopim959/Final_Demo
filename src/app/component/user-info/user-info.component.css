@@ -1,0 +1,22 @@
+.container-fluid {
+
+    font-weight: normal;
+}
+
+.close {
+    float: right;
+
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 2px;
+    line-height: 1;
+    cursor: pointer;
+
+
+}
+
+.cross {
+
+    display: flex;
+    justify-content: space-between;
+}
